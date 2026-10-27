@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EDIX WORKSは、東京を拠点にグラフィックデザインとWebデザインを手がけるデザインポートフォリオです。">
+  <title>EDIX WORKS | Design Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-header__brand" href="#top" aria-label="EDIX works トップへ">EDIX works</a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul class="site-nav__list">
+        <li><a href="#service">Service</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="site-nav__contact" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero__content">
+        <h1 id="hero-heading">EDIX WORKS</h1>
+        <p>東京都を拠点に活動するデザイナーです。グラフィックデザインとWebデザインが得意です。</p>
+      </div>
+    </section>
+
+    <section class="service section" id="service" aria-labelledby="service-heading">
+      <div class="section-heading">
+        <h2 id="service-heading">Service</h2>
+        <p>サービス</p>
+      </div>
+      <div class="service__list content-width">
+        <article class="service-item">
+          <div class="service-item__icon" aria-hidden="true">
+            <img src="./assets/icon2.png" alt="" width="143" height="121">
+          </div>
+          <h3>Graphic Design</h3>
+          <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </article>
+        <article class="service-item">
+          <div class="service-item__icon" aria-hidden="true">
+            <img src="./assets/icon1.png" alt="" width="179" height="141">
+          </div>
+          <h3>Web Design</h3>
+          <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </article>
+        <article class="service-item">
+          <div class="service-item__icon" aria-hidden="true">
+            <img src="./assets/icon3.png" alt="" width="134" height="114">
+          </div>
+          <h3>Direction</h3>
+          <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="works section" id="works" aria-labelledby="works-heading">
+      <div class="section-heading">
+        <h2 id="works-heading">Works</h2>
+        <p>制作実績</p>
+      </div>
+      <div class="works__grid content-width">
+        <article class="work-item">
+          <img src="./assets/work6.jpg" alt="水色のスマートフォンのUIデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">UIデザイン</span>
+        </article>
+        <article class="work-item">
+          <img src="./assets/work1.jpg" alt="3台のスマートフォンのUIデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">UIデザイン</span>
+        </article>
+        <article class="work-item">
+          <img src="./assets/work4.jpg" alt="紫色と白色のスマートフォンのグラフィックデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">グラフィックデザイン</span>
+        </article>
+        <article class="work-item">
+          <img src="./assets/work3.jpg" alt="オレンジ色のスマートフォンのグラフィックデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">グラフィックデザイン</span>
+        </article>
+        <article class="work-item">
+          <img src="./assets/work5.jpg" alt="海をイメージしたスマートフォンのWebデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">ウェブデザイン</span>
+        </article>
+        <article class="work-item">
+          <img src="./assets/work2.jpg" alt="デスクトップパソコンとスマートフォンのWebデザイン" width="240" height="240">
+          <h3>プロジェクト名が入ります</h3>
+          <span class="work-item__category">ウェブデザイン</span>
+        </article>
+      </div>
+      <a class="works__more" href="#about">View More</a>
+    </section>
+
+    <section class="about section" id="about" aria-labelledby="about-heading">
+      <div class="section-heading">
+        <h2 id="about-heading">About</h2>
+        <p>私について</p>
+      </div>
+      <div class="about__profile">
+        <img class="about__portrait" src="./assets/about.jpg" alt="デザイナー Tanaka Aoi のプロフィール写真" width="360" height="240">
+        <div class="about__text">
+          <h3>Tanaka Aoi</h3>
+          <p>企業やサービスの課題をデザインの力で解決するWebデザイナーです。UI/UXを重視し、ユーザーの行動心理を踏まえた情報設計と、目的達成につながるビジュアル表現を得意としています。企画段階から関わり、デザインだけでなく、実装・改善までを一貫して対応。デザインの見た目だけでなく、成果を生む体験を設計することを大切にしています。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__bar">
+      <small>&copy;Tanaka Aoi</small>
+    </div>
+  </footer>
+</body>
+</html>
