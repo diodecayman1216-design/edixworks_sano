@@ -45,10 +45,14 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* 変更：ロゴとナビゲーションを常に1行に配置 */
+  flex-wrap: nowrap;
   height: 40px;
 }
 
 .site-header__brand {
+  flex-shrink: 0;
+  white-space: nowrap;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.4;
@@ -56,6 +60,7 @@ img {
 
 .site-nav__list {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 43px;
   margin: 0;
@@ -63,7 +68,14 @@ img {
   list-style: none;
 }
 
+/* 変更：サイズの異なるリンクもヘッダー内で上下中央に揃える */
+.site-nav__list > li {
+  display: flex;
+  align-items: center;
+}
+
 .site-nav__list > li > a {
+  white-space: nowrap;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
@@ -334,27 +346,27 @@ img {
 @media (max-width: 768px) {
   .site-header {
     top: 28px;
-    flex-wrap: wrap;
-    gap: 20px;
+    /* 変更：タブレットでも折り返さず、文字と間隔を縮めて1行に収める */
+    gap: 12px;
     height: auto;
   }
 
   .site-header__brand {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .site-nav__list {
-    flex-wrap: wrap;
-    gap: 12px 20px;
+    gap: 12px;
   }
 
   .site-nav__list > li > a {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .site-nav__list > li > a.site-nav__contact {
-    width: 104px;
+    width: 80px;
     height: 36px;
+    font-size: 12px;
   }
 
   .hero {
@@ -469,29 +481,30 @@ img {
     top: 20px;
     right: 16px;
     left: 16px;
-    flex-direction: column;
-    gap: 16px;
+    /* 変更：スマホの縦並びを解除し、ロゴとメニューを横1行に配置 */
+    flex-direction: row;
+    gap: 8px;
   }
 
-  .site-nav {
-    width: 100%;
+  .site-header__brand {
+    font-size: clamp(14px, 4vw, 18px);
   }
 
   .site-nav__list {
-    justify-content: center;
-    gap: 12px;
+    justify-content: flex-end;
+    gap: clamp(4px, 1.5vw, 8px);
   }
 
   .site-nav__list > li > a {
     display: inline-flex;
     align-items: center;
     min-height: 40px;
-    font-size: 12px;
+    font-size: clamp(10px, 2.8vw, 12px);
   }
 
   .site-nav__list > li > a.site-nav__contact {
-    width: 80px;
-    font-size: 12px;
+    width: clamp(52px, 14vw, 64px);
+    font-size: clamp(10px, 2.8vw, 12px);
   }
 
   .hero {
