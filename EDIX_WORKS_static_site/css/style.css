@@ -14,6 +14,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* 変更：メニューの移動先が固定ヘッダーに隠れないよう余白を確保 */
+  scroll-padding-top: 88px;
 }
 
 body {
@@ -37,17 +39,22 @@ img {
 }
 
 .site-header {
-  position: absolute;
+  /* 変更：PC・スマホ共通で、スクロール中も画面上部に固定表示 */
+  position: fixed;
   z-index: 10;
-  top: 70px;
-  right: 20px;
-  left: 20px;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* 変更：ロゴとナビゲーションを常に1行に配置 */
   flex-wrap: nowrap;
-  height: 40px;
+  height: auto;
+  padding: 16px 20px;
+  /* 変更：背後の画像や文字に重なってもメニューが読める背景を追加 */
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .site-header__brand {
@@ -345,7 +352,8 @@ img {
 /* 変更：768px以下のタブレット向けに文字・余白・列数を調整 */
 @media (max-width: 768px) {
   .site-header {
-    top: 28px;
+    /* 変更：固定位置は共通にし、タブレットでは内側の余白を調整 */
+    padding: 12px 20px;
     /* 変更：タブレットでも折り返さず、文字と間隔を縮めて1行に収める */
     gap: 12px;
     height: auto;
@@ -478,9 +486,8 @@ img {
   }
 
   .site-header {
-    top: 20px;
-    right: 16px;
-    left: 16px;
+    /* 変更：スマホでも上端に固定し、1行表示を保つ余白に調整 */
+    padding: 8px 16px;
     /* 変更：スマホの縦並びを解除し、ロゴとメニューを横1行に配置 */
     flex-direction: row;
     gap: 8px;
