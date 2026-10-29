@@ -17,8 +17,9 @@ html {
 }
 
 body {
-  min-width: 1200px;
+  /* 変更：固定の最小幅を解除し、長い文字列も画面幅内で折り返す */
   margin: 0;
+  overflow-wrap: anywhere;
   color: var(--ink);
   background: #fff;
   font-family: "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
@@ -28,6 +29,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* 変更：画像が親要素の幅を超えないようにする */
+img {
+  max-width: 100%;
 }
 
 .site-header {
@@ -111,7 +117,8 @@ a {
 }
 
 .content-width {
-  width: 1028px;
+  /* 変更：PCの最大幅を維持しながら画面幅に追従 */
+  width: min(1028px, calc(100% - 48px));
   margin-right: auto;
   margin-left: auto;
 }
@@ -136,8 +143,10 @@ a {
 }
 
 .service {
-  height: 650px;
+  /* 変更：文字の折り返しで内容が増えてもセクションが重ならない高さ */
+  min-height: 650px;
   padding-top: 143px;
+  padding-bottom: 80px;
   background: #fff;
 }
 
@@ -149,8 +158,8 @@ a {
 
 .service__list {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
-  gap: 64px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 4.5vw, 64px);
   margin-top: 68px;
 }
 
@@ -173,7 +182,7 @@ a {
 
 .service-item h3 {
   margin: 22px 0 0;
-  font-size: 24px;
+  font-size: clamp(18px, 2vw, 24px);
   font-weight: 700;
   line-height: 34px;
   text-align: center;
@@ -195,16 +204,18 @@ a {
 
 .works__grid {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
-  column-gap: 64px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(20px, 4.5vw, 64px);
   row-gap: 65px;
   margin-top: 63px;
 }
 
 .work-item > img {
   display: block;
-  width: 300px;
-  height: 300px;
+  /* 変更：カード幅に合わせて正方形の画像を拡縮 */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
 }
 
@@ -247,16 +258,17 @@ a {
 }
 
 .about {
-  height: 539px;
+  min-height: 539px;
   padding-top: 73px;
+  padding-bottom: 80px;
   background: var(--light-gray);
 }
 
 .about__profile {
   display: grid;
-  grid-template-columns: 200px 480px;
+  grid-template-columns: 200px minmax(0, 1fr);
   column-gap: 60px;
-  width: 740px;
+  width: min(740px, calc(100% - 48px));
   margin: 70px auto 0;
   align-items: start;
 }
@@ -311,6 +323,310 @@ a {
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
+}
+
+/* 変更：PCではカルーセルのドットを表示しない */
+.works__pagination {
+  display: none;
+}
+
+/* 変更：768px以下のタブレット向けに文字・余白・列数を調整 */
+@media (max-width: 768px) {
+  .site-header {
+    top: 28px;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+  }
+
+  .site-header__brand {
+    font-size: 22px;
+  }
+
+  .site-nav__list {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .site-nav__list > li > a {
+    font-size: 14px;
+  }
+
+  .site-nav__list > li > a.site-nav__contact {
+    width: 104px;
+    height: 36px;
+  }
+
+  .hero {
+    height: 540px;
+  }
+
+  .hero__content {
+    top: 240px;
+    padding: 0 24px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .section-heading h2 {
+    font-size: 38px;
+    line-height: 1.3;
+  }
+
+  .service,
+  .works,
+  .about {
+    min-height: 0;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .service__list {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 440px;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .service-item h3 {
+    margin-top: 16px;
+    font-size: 22px;
+  }
+
+  .service-item > p,
+  .about__text p,
+  .work-item > p {
+    line-height: 1.8;
+  }
+
+  .works__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 24px;
+    margin-top: 40px;
+  }
+
+  .work-item h3 {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .work-item > p {
+    font-size: 14px;
+  }
+
+  .work-item__category {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+
+  .works__more {
+    margin-top: 40px;
+  }
+
+  .about__profile {
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .about__portrait {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about__text h3 {
+    top: 0;
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .about__text p {
+    font-size: 14px;
+  }
+
+  .site-footer {
+    padding-top: 40px;
+  }
+
+  .site-footer__bar {
+    height: auto;
+    min-height: 28px;
+    padding: 4px 24px;
+  }
+}
+
+/* 変更：480px以下のスマホ向けレイアウトとWorksカルーセル */
+@media (max-width: 480px) {
+  .content-width,
+  .about__profile {
+    width: calc(100% - 32px);
+  }
+
+  .site-header {
+    top: 20px;
+    right: 16px;
+    left: 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .site-nav__list {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .site-nav__list > li > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    font-size: 12px;
+  }
+
+  .site-nav__list > li > a.site-nav__contact {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .hero {
+    height: 480px;
+  }
+
+  .hero__content {
+    top: 230px;
+    padding: 0 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 9vw, 40px);
+  }
+
+  .hero p {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .section-heading h2 {
+    font-size: 32px;
+  }
+
+  .section-heading p {
+    font-size: 12px;
+  }
+
+  .service,
+  .works,
+  .about {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .service-item__icon {
+    width: 112px;
+    height: 112px;
+  }
+
+  .service-item__icon img {
+    width: 72px;
+  }
+
+  .service-item h3 {
+    font-size: 20px;
+  }
+
+  /* 横スクロールはこの領域だけに閉じ込め、1枚ごとに停止させる */
+  .works__grid {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .works__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-item {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .works__pagination:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    width: calc(100% - 32px);
+    margin: 20px auto 0;
+  }
+
+  /* 小さいドットでも指で操作しやすいボタン領域を確保 */
+  .works__dot {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .works__dot::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #b5b5b5;
+  }
+
+  .works__dot[aria-current="true"]::before {
+    background: var(--blue);
+    transform: scale(1.25);
+  }
+
+  .works__dot:focus-visible,
+  .works__grid:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+
+  .works__more {
+    margin-top: 28px;
+  }
+
+  .about__profile {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 24px;
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .about__text {
+    padding-left: 0;
+  }
+
+  .about__text h3 {
+    font-size: 24px;
+  }
+
+  .site-footer__bar {
+    padding-right: 16px;
+  }
 }
 
 /* 変更：画面に入ったセクションを下からふわっと表示（JavaScriptで有効化） */

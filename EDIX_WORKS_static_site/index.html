@@ -68,7 +68,8 @@
         <h2 id="works-heading">Works</h2>
         <p>制作実績</p>
       </div>
-      <div class="works__grid content-width">
+      <!-- 変更：480px以下では横スワイプできるカルーセルとして表示 -->
+      <div class="works__grid content-width" id="works-carousel">
         <article class="work-item">
           <img src="./assets/work6.jpg" alt="水色のスマートフォンのUIデザイン" width="240" height="240">
           <!-- 変更：Worksセクションの1つ目のカードのタイトルを更新 -->
@@ -103,6 +104,8 @@
           <span class="work-item__category">ウェブデザイン</span>
         </article>
       </div>
+      <!-- 変更：スマホ用のページネーション。ボタンはJavaScriptで生成 -->
+      <div class="works__pagination" role="group" aria-label="制作実績のスライドを選択" hidden></div>
       <a class="works__more" href="#about">View More</a>
     </section>
 
@@ -131,5 +134,7 @@
   </footer>
   <!-- 変更：各セクションのスクロール時フェードインを実行 -->
   <script src="./js/scroll-reveal.js"></script>
+  <!-- 変更：スマホ用Worksカルーセルのスワイプ・ドット操作を有効化 -->
+  <script src="./js/works-carousel.js"></script>
 </body>
 </html>
