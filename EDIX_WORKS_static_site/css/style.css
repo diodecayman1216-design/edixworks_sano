@@ -312,3 +312,29 @@ a {
   font-weight: 400;
   line-height: 18px;
 }
+
+/* 変更：画面に入ったセクションを下からふわっと表示（JavaScriptで有効化） */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.is-visible,
+.scroll-reveal:focus-within {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 変更：端末の「視差効果を減らす」設定ではアニメーションを省略 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
